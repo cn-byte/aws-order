@@ -1,8 +1,8 @@
 package service
 
 import (
+	"aws-order/conf/enums"
 	"aws-order/models/entity"
-	"aws-order/models/enums"
 	"aws-order/models/repository"
 	"aws-order/models/valueobject"
 	"aws-order/util"
