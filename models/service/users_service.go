@@ -35,7 +35,7 @@ func (s *UsersService) QueryDetail(ctx context.Context, users entity.Users) (*en
 func (s *UsersService) Save(ctx context.Context, usersSaveParamVo valueobject.UsersSaveParamVo) error {
 	var err error
 	var users entity.Users
-	_ = gconv.Structs(usersSaveParamVo, &users)
+	_ = gconv.Struct(usersSaveParamVo, &users)
 	if usersSaveParamVo.Id > 0 {
 		find, _ := s.usersRepo.Find(ctx, entity.Users{Id: usersSaveParamVo.Id})
 		if find == nil {
@@ -81,13 +81,13 @@ func (s *UsersService) Disable(ctx context.Context, users entity.Users) error {
 }
 
 // Delete 删除
-func (s *UsersService) Delete(ctx context.Context, trainConfig entity.Users) error {
-	err := s.ExistId(ctx, trainConfig.Id)
+func (s *UsersService) Delete(ctx context.Context, users entity.Users) error {
+	err := s.ExistId(ctx, users.Id)
 	if err != nil {
 		return err
 	}
 	err = s.usersRepo.Update(ctx, entity.Users{
-		Id:     trainConfig.Id,
+		Id:     users.Id,
 		Status: int32(enums.UsersStatusDelete),
 	})
 	if err != nil {

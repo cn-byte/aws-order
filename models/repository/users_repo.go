@@ -61,9 +61,9 @@ func (s *UsersRepo) Find(ctx context.Context, users entity.Users) (*entity.Users
 	if db.Error == gorm.ErrRecordNotFound {
 		return nil, nil
 	}
-	var record *entity.Users
-	_ = gconv.Struct(usersDO, record)
-	return record, db.Error
+	var record entity.Users
+	_ = gconv.Struct(usersDO, &record)
+	return &record, db.Error
 }
 
 // Create 创建

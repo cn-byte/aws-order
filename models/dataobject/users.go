@@ -15,5 +15,5 @@ type UsersDO struct {
 
 // UsersDO 表名
 func (UsersDO) TableName() string {
-	return "t_user"
+	return "t_users"
 }
