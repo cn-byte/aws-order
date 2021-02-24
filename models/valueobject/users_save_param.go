@@ -1,10 +1,13 @@
-package entity
+package valueobject
 
 import "time"
 
-type Users struct {
+/**
+* @Description: 用户
+**/
+type UsersSaveParamVo struct {
 	Id         int32      //主键
-	Username   string     //用户名
+	UserName   string     //用户名
 	Password   string     //密码
 	Status     int32      //用户状态
 	CreateTime *time.Time //创建时间
